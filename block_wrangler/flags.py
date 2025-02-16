@@ -50,10 +50,15 @@ class Flag(IFlag):
 		function_name = self.config.function_name(flag)
 		return f"{return_type} {function_name}({config.id_type} id) {{"
 	
-	def render_decoder(self, flag:str, mapping:list[MapEntry], config:MappingConfig):
+	def render_decoder(self, flag:str, mapping:list[MapEntry], config:MappingConfig):	
+		IDs = [entry["id"] for entry in mapping if flag in entry['flags']]
+		if(len(IDs) == 1):
+			yield f"#define MATERIAL_{flag.upper()} {IDs[0]}"
+
 		yield self.function_decl('bool', flag, config)
 		yield f"\treturn {self.check_id(flag, mapping)};"
 		yield "}"
+
 
 	def expand_flags(self, flag:str) -> dict[str, _BlockCollection]:
 		return {flag:self.values}
