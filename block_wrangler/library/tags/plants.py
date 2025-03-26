@@ -37,6 +37,10 @@ def load_tags(library:TagLibrary):
 			'minecraft:sweet_berry_bush',
 			'minecraft:tall_grass',
 			'minecraft:vine',
+			'minecraft:bush',
+			'minecraft:firefly_bush',
+			'minecraft:short_dry_grass',
+			'minecraft:tall_dry_grass'
 		))
 	
 	library.touch('plant/thick') \
