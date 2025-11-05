@@ -166,6 +166,12 @@ class BlockMapping:
             "",
         ]
 
+        lines.append("#ifndef DISTANT_HORIZONS")
+        for b in ["UNKNOWN", "LEAVES", "STONE", "WOOD", "METAL", "DIRT", "GRASS", "LAVA", "DEEPSLATE", "SNOW", "SAND", "TERRACOTTA", "NETHER_STONE", "WATER", "AIR", "ILLUMINATED"]:
+            lines.append(f"    #define DH_BLOCK_{b} -1")
+        lines.append("#endif")
+        lines.append("\n")
+
         for flag_name, flag in self.flags.items():
             values: dict[Any, list[int]] = dict()
             for entry in self.mapping:

@@ -45,7 +45,7 @@ def load_tags(library: TagLibrary):
         .add(block_types(
             'minecraft:mangrove_propagule'
         ), lambda state: state.hanging == 'true') \
-        .add(library.touch('lanterns'), lambda state: state.hanging == 'true')
+        .add(library.touch('minecraft:lanterns'), lambda state: state.hanging == 'true')
 
     library.touch('sway/full') \
         .add(library.touch('minecraft:leaves'))
